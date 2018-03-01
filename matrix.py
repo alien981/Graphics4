@@ -19,28 +19,28 @@ def make_scale( x, y, z ):
 def make_rotX( theta ):    
 	m = new_matrix(4, 4)
 	ident(m)
-	m[1][1] = int(math.cos(math.pi*theta/180))
-	m[1][2] = int(math.sin(math.pi*theta/180))
-	m[2][1] = int(- math.sin(math.pi*theta/180))
-	m[2][2] = int(math.cos(math.pi*theta/180))
+	m[1][1] = math.cos(math.pi*theta/180)
+	m[1][2] = math.sin(math.pi*theta/180)
+	m[2][1] = - math.sin(math.pi*theta/180)
+	m[2][2] = math.cos(math.pi*theta/180)
 	return m
 
 def make_rotY( theta ):
 	m = new_matrix(4, 4)
 	ident(m)
-	m[0][0] = int(math.cos(math.pi*theta/180))
-	m[0][2] = int(- math.sin(math.pi*theta/180))
-	m[2][0] = int(math.sin(math.pi*theta/180))
-	m[2][2] = int(math.cos(math.pi*theta/180))
+	m[0][0] = math.cos(math.pi*theta/180)
+	m[0][2] = - math.sin(math.pi*theta/180)
+	m[2][0] = math.sin(math.pi*theta/180)
+	m[2][2] = math.cos(math.pi*theta/180)
 	return m
 
 def make_rotZ( theta ):
 	m = new_matrix(4, 4)
 	ident(m)
-	m[0][0] = int(math.cos(math.pi*theta/180))
-	m[0][2] = int(math.sin(math.pi*theta/180))
-	m[2][0] = int(- math.sin(math.pi*theta/180))
-	m[2][2] = int(math.cos(math.pi*theta/180))
+	m[0][0] = math.cos(math.pi*theta/180)
+	m[0][2] = math.sin(math.pi*theta/180)
+	m[2][0] = - math.sin(math.pi*theta/180)
+	m[2][2] = math.cos(math.pi*theta/180)
 	return m
 
 def print_matrix( matrix ):

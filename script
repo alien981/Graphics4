@@ -7,3 +7,5 @@ scale
 move
 1 2 3
 ident
+rotate
+x 90

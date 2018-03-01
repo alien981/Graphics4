@@ -8,9 +8,6 @@ The file follows the following format:
      Every command is a single character that takes up a line
      Any command that requires arguments must have those arguments in the second line.
      The commands are as follows:
-	 -rotate: create a rotation matrix,
-	    then multiply the transform matrix by the rotation matrix -
-	    takes 2 arguments (axis, theta) axis should be x, y or z
 	 -apply: apply the current transformation matrix to the 
 	    edge matrix
 	 -display: draw the lines of the edge matrix to the screen
@@ -42,7 +39,16 @@ def parse_file( fname, points, transform, screen, color ):
 		elif (q[w] == 'ident\n'):
 			ident(transform)
 			w += 1
-		
+		elif (q[w] == 'rotate\n'):
+			e = q[w+1].split()
+			if (e[0] == 'x'):
+				matrix_mult(make_rotX(int(e[1])), transform)
+			elif (e[0] == 'y'):
+				matrix_mult(make_rotY(int(e[1])), transform)
+			else:
+				matrix_mult(make_rotZ(int(e[1])), transform)
+			w += 2
+
 
 #mult at end
 
@@ -60,6 +66,9 @@ Done:
 	 -move: create a translation matrix, 
 	    then multiply the transform matrix by the translation matrix - 
 	    takes 3 arguments (tx, ty, tz)
+	 -rotate: create a rotation matrix,
+	    then multiply the transform matrix by the rotation matrix -
+	    takes 2 arguments (axis, theta) axis should be x, y or z
 """
 
 
