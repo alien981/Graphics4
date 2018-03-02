@@ -11,6 +11,3 @@ ident(transform)
 
 
 parse_file( 'script', edges, transform, screen, color )
-#mult at end
-print_matrix(edges)
-print_matrix(transform)

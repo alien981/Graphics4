@@ -8,15 +8,6 @@ The file follows the following format:
      Every command is a single character that takes up a line
      Any command that requires arguments must have those arguments in the second line.
      The commands are as follows:
-	 -apply: apply the current transformation matrix to the 
-	    edge matrix
-	 -display: draw the lines of the edge matrix to the screen
-	    display the screen
-	 -save: draw the lines of the edge matrix to the screen
-	    save the screen to a file -
-	    takes 1 argument (file name)
-	 -quit: end parsing
-
 See the file script for an example of the file format
 """
 def parse_file( fname, points, transform, screen, color ):
@@ -48,9 +39,31 @@ def parse_file( fname, points, transform, screen, color ):
 			else:
 				matrix_mult(make_rotZ(int(e[1])), transform)
 			w += 2
-
-
-#mult at end
+		elif (q[w] == 'apply\n'):
+			matrix_mult(transform, points)
+			ident(transform)
+			w += 1
+		elif (q[w] == 'display\n'):
+			for row in points:
+				r = 0
+				while (r < len(row)):
+					row[r] = int(row[r])
+					r += 1
+			draw_lines(points, screen, color)
+			display(screen)
+			w += 1
+		elif (q[w] == 'save\n'):
+			for row in points:
+				r = 0
+				while (r < len(row)):
+					row[r] = int(row[r])
+					r += 1
+			draw_lines(points, screen, color)
+			save_ppm(screen, q[w+1])
+			display(screen)
+			w += 2
+		else:
+			w += 1
 
 
 
@@ -69,6 +82,15 @@ Done:
 	 -rotate: create a rotation matrix,
 	    then multiply the transform matrix by the rotation matrix -
 	    takes 2 arguments (axis, theta) axis should be x, y or z
+	 -quit: end parsing
+	 -apply: apply the current transformation matrix to the 
+	    edge matrix
+	 -display: draw the lines of the edge matrix to the screen
+	    display the screen
+	 -save: draw the lines of the edge matrix to the screen
+	    save the screen to a file -
+	    takes 1 argument (file name)
+
 """
 
 
