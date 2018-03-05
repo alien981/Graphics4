@@ -64,7 +64,7 @@ def parse_file( fname, points, transform, screen, color ):
 			w += 2
 		else:
 			w += 1
-
+		file.close()
 
 
 
